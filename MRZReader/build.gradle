@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+
+    defaultConfig {
+        applicationId "com.byteshaft.mrzreader"
+        minSdkVersion 21
+        targetSdkVersion 28
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles 'proguard.cfg'
+        }
+    }
+    lintOptions {
+        //we need to figure out why bounce castle is using javax
+        //because android lint complaint invalid package
+        disable 'InvalidPackage'
+        textReport true
+        textOutput 'stdout'
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:support-compat:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.rmtheis:tess-two:6.2.0'
+    implementation 'org.jmrtd:jmrtd:0.5.13'
+}
+
+repositories {
+    google()
+}
+
+buildscript {
+    repositories {
+        google()
+    }
+}
